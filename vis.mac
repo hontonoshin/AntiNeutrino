@@ -1,0 +1,25 @@
+# Visualization macro for antineutrino detector geometry
+/run/initialize
+
+# Use OpenGL viewer (fall back to OGI if OGL unavailable)
+/vis/open OGL 800x800-0+0
+
+/vis/viewer/set/autoRefresh false
+/vis/viewer/set/viewpointThetaPhi 60 30
+/vis/viewer/set/style surface
+/vis/viewer/set/lightsThetaPhi 60 30
+
+/vis/drawVolume
+
+/vis/scene/create
+/vis/scene/add/volume
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate 50
+
+/vis/viewer/set/autoRefresh true
+
+# Draw axes (10 cm length)
+/vis/scene/add/axes 0 0 0 10 cm
+
+# Show a few example events
+/run/beamOn 10
